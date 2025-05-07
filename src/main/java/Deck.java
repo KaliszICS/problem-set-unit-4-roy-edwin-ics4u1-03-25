@@ -2,74 +2,85 @@
  * @author Roy Edwin
 */  
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 /**
- * This class makes a playing card with a name, suit, and value.
+ * This class makes a deck of playing cards.
  */
-public class Card {
-
-    private String name;
-    private String suit;
-    private int value;
+public class Deck {
+    private ArrayList<Card> deck;
 
     /**
-     * Creates a new card with a name, suit, and value.
+     * Makes a deck from a given list of cards.
      *
-     * @param name the name of the card (like \"Ace\" or \"10\")
-     * @param suit the suit of the card (like \"Hearts\" or \"Spades\")
-     * @param value the value of the card (used for comparing cards)
+     * @param cards an array of cards to put in the deck
      */
-    public Card(String name, String suit, int value) {
-        this.name = name;
-        this.suit = suit;
-        this.value = value;
+    public Deck(Card[] cards) {
+        this.deck = new ArrayList<Card>(Arrays.asList(cards));
     }
 
     /**
-     * Gets the name of the card.
-     *
-     * @return the name of the card
+     * Makes a regular deck with 52 cards.
      */
-    public String getName() {
-        return name;
+    public Deck() {
+        String[] names = new String[] {
+            "Ace",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "Jack",
+            "Queen",
+            "King",
+        };
+
+        String[] suits = new String[] {
+            "Hearts",
+            "Clubs",
+            "Diamonds",
+            "Spades",
+        };
+
+        this.deck = new ArrayList<Card>();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 13; j++) {
+                this.deck.add(new Card(names[j], suits[i], i + j * 4));
+            }
+        }
     }
 
     /**
-     * Gets the suit of the card.
-     *
-     * @return the suit of the card
+     * Mixes up the order of the cards.
      */
-    public String getSuit() {
-        return suit;
+    public void shuffle() {
+        Collections.shuffle(this.deck);
     }
 
     /**
-     * Gets the value of the card.
+     * Takes the top card from the deck.
      *
-     * @return the value of the card
+     * @return the card that was taken, or null if the deck is empty
      */
-    public int getValue() {
-        return value;
+    public Card draw() {
+        if (this.deck.size() > 0) {
+            return this.deck.remove(0);
+        }
+        return null;
     }
 
     /**
-     * Shows the card as a simple sentence.
+     * Tells how many cards are left in the deck.
      *
-     * @return a string like \"Ace of Hearts\"
+     * @return the number of cards in the deck
      */
-    @Override
-    public String toString() {
-        return this.name + " of " + this.suit;
-    }
-
-    /**
-     * Checks if this card is the same as another card.
-     *
-     * @param obj the object to compare
-     * @return true if both cards are the same, false if they are different
-     */
-    @Override
-    public boolean equals(Object obj) {
-        Card other = (Card) obj;
-        return this.name.equals(other.getName()) && this.suit.equals(other.getSuit()) && this.value == other.getValue();
+    public int size() {
+        return this.deck.size();
     }
 }
