@@ -1,9 +1,6 @@
 /**
- * @author Roy Edwin
-*/  
-
-/**
  * This class makes a playing card with a name, suit, and value.
+    * @author Roy Edwin
  */
 public class Card {
 
