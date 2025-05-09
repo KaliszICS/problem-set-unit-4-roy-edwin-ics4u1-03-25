@@ -82,5 +82,30 @@ public class Deck {
      */
     public int size() {
         return this.deck.size();
+
+/**Adds a card into the deck.
+     * 
+     * @param card the card to insert
+     */
+    public void addCard(Card card) {
+        
+        if (card == null) { return; }
+        
+        deck.add(card);
+
+    }
+
+    /**
+     * Adds cards from an Array, then shuffles the deck.
+     * @param cards
+     */
+    public void reshuffle(Card[] cards) {
+
+        for (int i = 0; i < cards.length; i++) {
+            addCard(cards[i]);
+        }
+        shuffle();
+    }
+
     }
 }
