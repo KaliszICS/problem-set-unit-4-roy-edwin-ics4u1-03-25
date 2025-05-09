@@ -1,13 +1,10 @@
-/**
- * @author Roy Edwin
-*/  
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 /**
  * This class makes a deck of playing cards.
+     * @author Roy Edwin
  */
 public class Deck {
     private ArrayList<Card> deck;
@@ -83,6 +80,7 @@ public class Deck {
     public int size() {
         return this.deck.size();
 
+    }
 /**Adds a card into the deck.
      * 
      * @param card the card to insert
@@ -105,5 +103,6 @@ public class Deck {
             addCard(cards[i]);
         }
         shuffle();
+        }
     }
 }
