@@ -1,0 +1,8 @@
+K(30%): 100
+I(30%): 91
+C(10%): 100
+A(30%): 93
+95.2% of 90 - 85.68
+equals should check if the object is null or not a card.
+shuffle should not use collections.shuffle.
+removeAll would be simpler and faster to remove only after you've copied everything by clearing it.
